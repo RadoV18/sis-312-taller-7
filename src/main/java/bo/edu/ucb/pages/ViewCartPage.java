@@ -15,6 +15,9 @@ public class ViewCartPage {
     @FindBy(xpath = "//a[@href='/product_details/2']")
     private WebElement product;
 
+    @FindBy(xpath = "//p[@class='text-center']/b")
+    private WebElement emptyCartMessage;
+
     public ViewCartPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -32,4 +35,11 @@ public class ViewCartPage {
         return product.getText();
     }
 
+    public boolean isCartEmpty() {
+        return emptyCartMessage.isDisplayed();
+    }
+
+    public String getEmptyCartMessage() {
+        return emptyCartMessage.getText();
+    }
 }
